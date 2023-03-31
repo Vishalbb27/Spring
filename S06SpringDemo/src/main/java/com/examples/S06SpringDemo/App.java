@@ -12,11 +12,11 @@ public class App {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"com/examples/S06SpringDemo/springconfig4.xml");
 
-		ProductDao productDao = (ProductDao) ctx.getBean("productdao");
-
-		List<Product> productsList= productDao.findAll();
+//		ProductDao productDao = (ProductDao) ctx.getBean("productdao");
+//
+//		List<Product> productsList= productDao.findAll();
 		
-//		delete();
+		insert();
 		
 	}
 	
@@ -52,8 +52,9 @@ public class App {
 		ProductDao productDao=(ProductDao) ctx.getBean("productdao");
 		Product product = new Product();
 		product.setId(7);
-		product.setName("Jack");
-		product.setDescription("John");
+		product.setName("Hi");
+		product.setDescription("How");
 		product.setPrice(23);
+		productDao.create(product);
 	}
 }
