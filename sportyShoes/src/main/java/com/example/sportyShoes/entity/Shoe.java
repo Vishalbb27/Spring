@@ -22,6 +22,7 @@ public class Shoe {
 	private String price;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id")
 	private ShoeCategory category;
 	
 

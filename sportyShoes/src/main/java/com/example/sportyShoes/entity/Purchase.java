@@ -22,6 +22,17 @@ public class Purchase {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private ShoeCategory category;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Shoe shoe;
+	
+	public Shoe getShoe() {
+		return shoe;
+	}
+
+	public void setShoe(Shoe shoe) {
+		this.shoe = shoe;
+	}
+
 	@Column
 	private LocalDate date;
 

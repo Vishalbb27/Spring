@@ -45,7 +45,7 @@ public class Category {
 		ShoeCategory category = new ShoeCategory();
 		category.setName(name);
 		acr.save(category);
-		model.addAttribute("message", "deleted");
+		model.addAttribute("message", "New Category Added Successfully");
 		return "categoryConfirm";
 	}
 	

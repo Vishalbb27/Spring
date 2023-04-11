@@ -65,33 +65,44 @@ h1,h2{
 p{
 	text-align:center;
 }
+
+#fixed-button{
+	position:fixed;
+	bottom:20px;
+	right:20px;
+	background-color:green;
+	color:white;
+	padding:10px;
+	border-radius:5px;
+	cursor:pointer;
+	text-decoration: none;
+}
 </style>
 </head>
 <body>
-	<h1>Category</h1>
+	<h1>Cart</h1>
 
 	<table>
 		<tr>
-			<th>Id</th>
-			<th>Name</th>
-			<th>Delete</th>
-			<th>Update</th>
+			<th>Order No</th>
+			<th>Shoe Name</th>
+			<th>Category</th>
+			<th>Price</th>
 		</tr>
-		<c:forEach var="category" items="${category}">
+		<c:forEach var="shoe" items="${reportDetails}">
 			<tr>
-				<td>${category.id }</td>
-				<td>${category.name }</td>
-				<td><a href="categoryUpdate?categoryid=${category.id }">Update</a></td>
-				<td><a href="categoryDelete?categoryid=${category.id }">Delete</a></td>
+				<td>ONO${shoe.id }</td>
+				<td>${shoe.shoe.name }</td>
+				<td>${shoe.category.name }
+				<td>&#x20B9;${shoe.shoe.price }</td>
+				
 			</tr>
 		</c:forEach>
 	</table>
+
 	<p>
-		Insert New Category : <a style="padding:5px 20px 5px 20px" href="insertCategory">Insert</a>
+		<a href="userHome">Back</a>
 	</p>
-	<p>
-		<a  href="adminHome">Home</a>
-	</p>
-	<p> <a style="color:red;background-color:white;border:1px solid red" href="admin">Logout</a>
+	<a href="payments" id="fixed-button">Proceed to Buy</a>
 </body>
 </html>

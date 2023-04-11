@@ -6,6 +6,61 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link href="/resources/static/css/style.css" rel="stylesheet" type="text/css">
+<style>
+
+table{
+	border-collapse:collapse;
+	width:100%;
+}
+
+td,th{
+	padding:10px;
+}
+
+tr:nth-child(even){
+	background-color:#f2f2f2;
+}
+
+th{
+	background-color:#4CAF50;
+	color:white;
+	font-weight:bold;
+}
+
+tr:hover{
+	background-color:#ddd;
+}
+
+td{
+	text-align:center;
+}
+
+a{
+	display:inline-block;
+	background-color:#4CAF50;
+	color:white;
+	padding:10px 20px;
+	text-align:center;
+	text-decoration:none;
+	font-size:16px;
+	border-radius:5px;
+	border:none;
+	cursor:pointer;
+	transition:background-color 0.3s ease;
+	
+}
+
+.button:hover{
+	background-color:#3e8e41;
+}
+
+h1,h2{
+	text-align:center;
+}
+p{
+	text-align:center;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -37,7 +92,7 @@
 			</p>
 			<p>
 				<a style="background-color: black; color: white"
-					href="userdetails">User Details</a>
+					href="userDetails">User Details</a>
 			</p>
 		</div>
 		<p>

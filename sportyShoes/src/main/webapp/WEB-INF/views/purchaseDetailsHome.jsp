@@ -12,11 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 <style>
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
+
 
 body {
 	font-family: Arial, sans-serif;
@@ -43,11 +39,9 @@ main {
 
 .filters {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 20px;
-	margin-left:230px;
-	margin-right:230px;
 }
 
 .filters label {
@@ -86,7 +80,6 @@ main {
 	border: 1px solid #ccc;
 	padding: 10px;
 	text-align: center;
-	border-radius: 10px;
 }
 
 .shoe h2 {
@@ -95,7 +88,7 @@ main {
 }
 
 .shoe p {
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 .select-btn {
@@ -107,67 +100,112 @@ main {
 	cursor: pointer;
 }
 
-#fixed-button{
-	position:fixed;
-	bottom:20px;
-	right:20px;
-	background-color:#F3A847;
-	color:white;
-	padding:10px;
-	border-radius:5px;
-	text-decoration:none;
-	cursor:pointer;
+table {
+	border-collapse: collapse;
+	width: 100%;
 }
 
-#fixed-button2{
-	position:fixed;
-	bottom:20px;
-	left:20px;
-	background-color: white;
-	color:red;
-	border:1px solid red;
-	padding:10px;
-	text-decoration:none;
-	border-radius:5px;
-	cursor:pointer;
+td, th {
+	padding: 10px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+th {
+	background-color: #4CAF50;
+	color: white;
+	font-weight: bold;
+}
+
+tr:hover {
+	background-color: #ddd;
+}
+
+td {
+	text-align: center;
+}
+
+a {
+	display: inline-block;
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.button:hover {
+	background-color: #3e8e41;
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
 }
 </style>
 </head>
 <body>
-	<header>
-		<h1>Shoe Shopping Page</h1>
-		<div class="user-details">
-			<p>User: ${user.name }</p>
-			<p>Email: ${user.email }</p>
-		</div>
-	</header>
+	<h1>Purcase Report</h1>
 	<main>
-		<form action="filters" method="post">
+		<form action="filterPurchase" method="post">
 			<div class="filters">
 
-			 <label for="category">Category:</label> <select id="category"
+				<label for="category">Category:</label> <select id="category"
 					name="category" required>
 					<option value="all">All</option>
 					<c:forEach var="category" items="${category}">
 						<option>${category.name }</option>
 					</c:forEach>
-				</select> <input type="submit" id="filter-btn" class="button" value="Apply Filters"/>
+				</select> <label for="date">Date:</label> <select id="date" name="date"
+					required>
+					<option value="all">All</option>
+					<c:forEach var="date" items="${date1}">
+						<option>${date }</option>
+					</c:forEach>
+				</select> <input type="submit" id="filter-btn" class="button"
+					value="Apply Filters" />
 			</div>
 		</form>
 
-		<div class="shoes">
-			<c:forEach var="shoe" items="${shoes}">
-				<div class="shoe">
-					<h2>${shoe.name }</h2>
-					<p>&#x20B9;${shoe.price }</p>
-					<p>${shoe.category.name }</p>
-					<p><a class="select-btn" href="addShoes?shoesid=${shoe.id }">ADD</a></p>
-				</div>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Shoes</th>
+				<th>Category</th>
+				<th>Price</th>
+				<th>Date</th>
+			</tr>
+			<c:forEach var="purchase" items="${purchases}">
+				<tr>
+					<td>${purchase.id }</td>
+					<td>${purchase.user.name }</td>
+					<td>${purchase.user.email }</td>
+					<td>${purchase.shoe.name }
+					<td>${purchase.category.name }
+					<td>${purchase.shoe.price }</td>
+					<td>${purchase.date }</td>
+				</tr>
 			</c:forEach>
-		</div>
-		<a href="booknow" id="fixed-button">Go to Cart</a>
-		<a href="signupregister" id="fixed-button2">LOGOUT</a>
+		</table>
+
+		<p>
+			<a href="adminHome">Home</a>
+		</p>
+		<p>
+			<a style="color: red; background-color: white; border: 1px solid red"
+				href="admin">Logout</a>
 	</main>
-	
 </body>
 </html>
